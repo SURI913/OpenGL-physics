@@ -1,0 +1,37 @@
+#pragma once
+
+#include <Windows.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+#include "core.h" 
+#include "particle.h" 
+#include "MyAnchordSpring.h"
+using namespace cyclone;
+
+class Mover {
+public:
+	Mover(Vector3& p);	//p초기위치
+	~Mover() { };
+
+	float size;
+	float damping;
+	float m_mass;
+
+	MyAnchoredSpring* m_spring;
+
+	Vector3 m_position;
+	Vector3 m_oldPosition;
+	Vector3 m_velocity;
+	Vector3 m_acc;
+	Particle* m_particle;
+
+
+	void update(float duration);
+	void stop();
+	void draw(int shadow);
+	void checkEdges();
+	void setConnection();	//a 연결되는 상대방 mover
+	//draw somthing
+
+};
